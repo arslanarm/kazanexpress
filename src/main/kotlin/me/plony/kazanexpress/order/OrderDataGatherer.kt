@@ -7,12 +7,18 @@ import me.plony.kazanexpress.json.CustomerOrders
 import me.plony.kazanexpress.services.CustomerService
 import me.plony.kazanexpress.services.OrderService
 import me.plony.kazanexpress.services.ProductService
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 
-class OrderDataGatherer(
-    private val customerService: CustomerService,
-    private val orderService: OrderService,
-    private val productService: ProductService
-) : DataGatherer<Int, CustomerOrders>() {
+@Component
+class OrderDataGatherer : DataGatherer<Int, CustomerOrders>() {
+    @Autowired
+    private lateinit var customerService: CustomerService
+    @Autowired
+    private lateinit var orderService: OrderService
+    @Autowired
+    private lateinit var productService: ProductService
+
     override suspend fun gather(input: Int): CustomerOrders = coroutineScope {
         val customerDeferred = async { customerService.getCustomer(input) }
         val orders = orderService.getOrders(input)

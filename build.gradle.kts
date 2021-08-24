@@ -19,9 +19,9 @@ repositories {
 val coroutinesVersion = "1.5.1"
 
 dependencies {
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -30,9 +30,10 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
 	testImplementation("org.junit.vintage:junit-vintage-engine:5.7.0")
-	testImplementation("com.github.tomakehurst:wiremock")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.testcontainers:testcontainers:1.16.0")
+	testImplementation("org.testcontainers:junit-jupiter:1.16.0")
 }
 
 

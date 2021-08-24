@@ -1,8 +1,11 @@
 package me.plony.kazanexpress.services
 
 import me.plony.kazanexpress.configurations.CustomerServiceProperties
+import me.plony.kazanexpress.configurations.OrderServiceProperties
+import me.plony.kazanexpress.configurations.ProductServiceProperties
 import me.plony.kazanexpress.json.Customer
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.AutoConfigureBefore
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
@@ -16,6 +19,7 @@ class CustomerService {
 
     @Autowired
     private lateinit var properties: CustomerServiceProperties
+
 
     suspend fun getCustomer(customerId: Int): Customer = webClient.get()
         .uri(
